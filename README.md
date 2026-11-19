@@ -1,6 +1,6 @@
 # 🐹 Golang Learning Journey (From Scratch to Advanced)
 
-A clean, step-by-step repository documenting my journey learning **Go (Golang)**, covering daily topics from November 6, 2026 to November 17, 2026.
+A clean, step-by-step repository documenting my journey learning **Go (Golang)**, covering daily topics from November 6, 2026 to November 19, 2026.
 
 Each topic directory includes:
 * `main.go`: Fully runnable code examples.
@@ -24,6 +24,7 @@ Each topic directory includes:
 | **Day 10** | Nov 15 | `16_structs`, `17_struct_embedding` | Custom data types, anonymous structs, embedding & field promotion |
 | **Day 11** | Nov 16 | `18_methods`, `19_interfaces` | Value vs pointer receivers, implicit duck typing, `any`, type switches |
 | **Day 12** | Nov 17 | `20_error_handling`, `21_packages`, `22_go_modules` | Error interface, wrapping `%w`, `errors.Is`/`As`, custom packages, `init()`, `go.mod` & `go.sum` |
+| **Day 13** | Nov 19 | `23_goroutines` | Concurrency vs parallelism, M:N scheduler, `go` keyword, lifecycle & channel handshake |
 
 ---
 
