@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #FAF9F2;
+  --color-paperDark: #F2EFE2;
+  --color-ink: #222222;
+  --color-tealInk: #53B7BE;
+  --color-tealDeep: #146F77;
+  --color-tealSoft: #D7F0F2;
+  --color-yellowHi: #F9EE75;
+  --color-yellowSoft: #FDF7BC;
+  --color-redPen: #D64545;
+  --color-greenPen: #2E8B57;
+
+  --font-display: "Shantell Sans", cursive, sans-serif;
+  --font-hand: "Patrick Hand", cursive, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #FAF9F2;
+    color: #222222;
+    font-family: "Patrick Hand", cursive, sans-serif;
+    background-image: radial-gradient(rgba(34, 34, 34, 0.08) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+}
+
+/* Hand-drawn organic sketchnote surfaces */
+.sketch-box {
+  background-color: #FFFDF7;
+  border: 2.6px solid #222222;
+  border-radius: 22px 14px 24px 16px / 15px 24px 14px 22px;
+  box-shadow: 4px 4px 0px #222222;
+}
+
+.sketch-box-alt {
+  background-color: #FFFDF7;
+  border: 2.6px solid #222222;
+  border-radius: 14px 24px 16px 22px / 22px 15px 24px 14px;
+  box-shadow: 4px 4px 0px #222222;
+}
+
+.sketch-box-teal {
+  background-color: #E7F7F8;
+  border: 2.6px solid #222222;
+  border-radius: 18px 12px 20px 14px / 14px 20px 12px 18px;
+  box-shadow: 4px 4px 0px #53B7BE;
+}
+
+.sketch-box-yellow {
+  background-color: #FDF7B4;
+  border: 2.6px solid #222222;
+  border-radius: 16px 22px 14px 20px / 20px 14px 22px 16px;
+  box-shadow: 4px 4px 0px #222222;
+}
+
+.sketch-btn {
+  border: 2.4px solid #222222;
+  border-radius: 14px 10px 15px 11px / 11px 15px 10px 14px;
+  box-shadow: 3px 3px 0px #222222;
+  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.12s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.12s ease;
+  cursor: pointer;
+}
+
+.sketch-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #222222;
+}
+
+.sketch-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #222222;
+}
+
+.sketch-btn:focus-visible,
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #53B7BE;
+  outline-offset: 2px;
+}
+
+.hi-yellow {
+  background: linear-gradient(
+    104deg,
+    rgba(249, 238, 117, 0) 0.9%,
+    rgba(249, 238, 117, 0.95) 2.4%,
+    rgba(249, 238, 117, 0.85) 94%,
+    rgba(249, 238, 117, 0) 98%
+  );
+  padding: 0.05em 0.35em;
+  border-radius: 6px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.hi-teal {
+  background: linear-gradient(
+    104deg,
+    rgba(83, 183, 190, 0) 0.9%,
+    rgba(83, 183, 190, 0.35) 2.4%,
+    rgba(83, 183, 190, 0.28) 94%,
+    rgba(83, 183, 190, 0) 98%
+  );
+  padding: 0.05em 0.35em;
+  border-radius: 6px;
+}
+
+.speech-bubble {
+  position: relative;
+  background: #F9EE75;
+  border: 2.5px solid #222222;
+  border-radius: 24px 20px 26px 18px / 18px 24px 18px 22px;
+  padding: 14px 18px;
+}
+
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -13px;
+  left: 28px;
+  width: 18px;
+  height: 14px;
+  background: #F9EE75;
+  border-right: 2.5px solid #222222;
+  border-bottom: 2.5px solid #222222;
+  transform: skewX(-28deg) rotate(32deg);
+}
+
+.code-scrap {
+  background-color: #F4F2E7;
+  border: 2.4px solid #222222;
+  border-radius: 10px 14px 12px 16px / 14px 10px 16px 12px;
+  position: relative;
+}
+
+.tape-strip {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 74px;
+  height: 18px;
+  background: rgba(249, 238, 117, 0.82);
+  border: 1.5px dashed rgba(34, 34, 34, 0.38);
+  pointer-events: none;
+}
+
+/* Ink-pen syntax colors */
+.tk-kw {
+  color: #146F77;
+  font-weight: 700;
+}
+.tk-str {
+  color: #246F43;
+  font-weight: 600;
+}
+.tk-num {
+  color: #A64B07;
+  font-weight: 700;
+}
+.tk-cm {
+  color: #67665E;
+  font-style: italic;
+}
+.tk-op {
+  color: #C93B3B;
+  font-weight: 700;
+}
+
+.sk-section-title {
+  font-family: "Shantell Sans", cursive, sans-serif;
+  font-weight: 800;
+  color: #146F77;
+  letter-spacing: 0.02em;
+  text-shadow: 1.5px 1.5px 0px rgba(83, 183, 190, 0.28);
+}
+
+@keyframes popBounce {
+  0% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pop-bounce {
+  animation: popBounce 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .pop-bounce {
+    animation: none !important;
+  }
+  .sketch-btn {
+    transition: none !important;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF9F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #53B7BE;
+  border-radius: 99px;
+  border: 2px solid #FAF9F2;
+}

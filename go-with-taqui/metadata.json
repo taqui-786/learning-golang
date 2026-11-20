@@ -1,0 +1,8 @@
+{
+  "name": "Go with taqui",
+  "description": "Visual Go learning platform covering all 55 modules (0–54) and 615 subtopics from Go foundations to backend engineering, distributed systems, cloud deployment, and Agentic AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
