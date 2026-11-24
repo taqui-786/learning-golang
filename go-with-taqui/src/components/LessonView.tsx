@@ -5,6 +5,7 @@ import type { AppProgressState, SyllabusModule } from '../types';
 import { highlightGoHtml } from '../utils/highlightGo';
 import { SketchIcon } from './Icons';
 import { InteractiveLab } from './InteractiveLabs';
+import { SynchronizationGoldLesson } from './teaching/modules/SynchronizationGoldLesson';
 
 interface LessonViewProps {
   module: SyllabusModule;
@@ -199,7 +200,19 @@ export function LessonView({
 
       {/* ==================== MAIN LESSON WORKSPACE ==================== */}
       <div className="lg:col-span-9 space-y-7 min-w-0">
-        {/* 1. Lesson Header & Overview */}
+        {module.slug === 'synchronization' ? (
+          <SynchronizationGoldLesson
+            module={module}
+            progress={progress}
+            onToggleModuleComplete={onToggleModuleComplete}
+            onToggleSubtopic={onToggleSubtopic}
+            onCheckAllSubtopics={onCheckAllSubtopics}
+            onSaveQuizScore={onSaveQuizScore}
+            onToast={onToast}
+          />
+        ) : (
+          <>
+            {/* 1. Lesson Header & Overview */}
         <section className="sketch-box p-6 sm:p-8 space-y-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="text-xs sm:text-sm font-mono font-bold text-tealDeep">
@@ -534,6 +547,8 @@ export function LessonView({
             )}
           </div>
         </section>
+        </>
+      )}
 
         {/* 8. Previous / Next Module Navigation */}
         <nav
