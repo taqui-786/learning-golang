@@ -509,7 +509,7 @@ func (p *MuseumPlaque) Update(newMsg string) {
           /* MUTEX BATHROOM VISUAL */
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 items-stretch">
             {/* The Waiting Hallway */}
-            <div className="sketch-box p-3.5 space-y-2 bg-[#FFFDF7]">
+            <div className="sketch-box p-3.5 space-y-2">
               <div className="text-xs font-display font-black text-ink uppercase tracking-wide flex items-center gap-1.5">
                 <span>🚪</span> Hallway Queue
               </div>
@@ -602,7 +602,7 @@ func (p *MuseumPlaque) Update(newMsg string) {
           </div>
         ) : (
           /* RWMUTEX VISUAL */
-          <div className="sketch-box p-4 space-y-3 bg-[#FFFDF7]">
+          <div className="sketch-box p-4 space-y-3">
             <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b-2 border-dashed border-ink/20">
               <div className="font-display font-black text-sm text-ink flex items-center gap-2">
                 <span>🏛️</span> Museum Plaque State
@@ -769,7 +769,7 @@ func main() {
         {/* Bus & Clicker Counter Visual Stage */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 items-stretch">
           {/* Bus Driver Status */}
-          <div className="sketch-box p-3.5 space-y-2 bg-[#FFFDF7]">
+          <div className="sketch-box p-3.5 space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-xs font-display font-black text-ink uppercase">
                 🚌 Main Goroutine
@@ -819,7 +819,7 @@ func main() {
           </div>
 
           {/* Students on Field */}
-          <div className="sketch-box p-3.5 space-y-2 bg-[#FFFDF7]">
+          <div className="sketch-box p-3.5 space-y-2">
             <div className="text-xs font-display font-black text-ink uppercase">
               Students on Field
             </div>
@@ -1028,7 +1028,7 @@ func main() {
       <div className="space-y-4">
         {mode === 'once' ? (
           /* ONCE VISUAL */
-          <div className="sketch-box p-4 bg-[#FFFDF7] space-y-3">
+          <div className="sketch-box p-4 space-y-3">
             <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b-2 border-dashed border-ink/20">
               <span className="font-display font-black text-sm text-ink flex items-center gap-1.5">
                 <span>🔌</span> Database Singleton Initializer
@@ -1084,7 +1084,7 @@ func main() {
           </div>
         ) : (
           /* ATOMIC VISUAL */
-          <div className="sketch-box p-4 bg-[#FFFDF7] space-y-3">
+          <div className="sketch-box p-4 space-y-3">
             <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b-2 border-dashed border-ink/20">
               <span className="font-display font-black text-sm text-ink flex items-center gap-1.5">
                 <span>⚡</span> Hardware Bus Lock-Free Increments
@@ -1274,7 +1274,7 @@ go func() {
   ];
 
   return (
-    <div className="sketch-box p-5 sm:p-7 space-y-5 bg-[#FFFDF7]">
+    <div className="sketch-box p-5 sm:p-7 space-y-5">
       <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b-2 border-dashed border-ink/20">
         <div>
           <h3 className="font-display font-black text-2xl text-ink flex items-center gap-2">
@@ -1466,7 +1466,7 @@ j := <-ch // Receive`,
   ];
 
   return (
-    <div className="sketch-box p-5 sm:p-7 space-y-6 bg-[#FFFDF7]">
+    <div className="sketch-box p-5 sm:p-7 space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b-2 border-dashed border-ink/20">
         <div>
           <h3 className="font-display font-black text-2xl text-ink flex items-center gap-2">
@@ -1562,7 +1562,7 @@ j := <-ch // Receive`,
       </div>
 
       {/* Sticky Note Golden Rules */}
-      <div className="bg-[#FEFCE8] border-2 border-ink rounded-2xl p-4 sm:p-5 shadow-[4px_4px_0px_#222] space-y-2">
+      <div className="bg-yellowSoft border-2 border-ink rounded-2xl p-4 sm:p-5 shadow-[4px_4px_0px_#222] space-y-2">
         <div className="font-display font-black text-sm text-ink flex items-center gap-2">
           <span>📌</span> The 3 Golden Rules of Go Synchronization
         </div>
@@ -1602,7 +1602,7 @@ export function SynchronizationGoldLesson({
   return (
     <div className="space-y-8">
       {/* 1. Masterclass Sketchnote Hero Header */}
-      <header className="sketch-box p-6 sm:p-8 space-y-4 bg-[#FFFDF7] relative overflow-hidden">
+      <header className="sketch-box p-6 sm:p-8 space-y-4 relative overflow-hidden">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <span className="font-mono text-xs font-black uppercase px-3 py-1 rounded-full bg-tealDeep text-paper shadow-[2px_2px_0px_#222]">
@@ -1955,7 +1955,7 @@ const initDB = _.once(() => {
       {/* =========================================================================
           SUBTOPICS REVIEW LIST & QUIZ INTEGRATION
       ========================================================================= */}
-      <section className="sketch-box p-5 sm:p-7 space-y-4 bg-[#FFFDF7]">
+      <section className="sketch-box p-5 sm:p-7 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h3 className="font-display font-black text-2xl text-ink">

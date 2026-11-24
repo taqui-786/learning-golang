@@ -48,12 +48,12 @@ export function Term({ id, children, className = '' }: TermProps) {
       {isOpen && (
         <div
           role="tooltip"
-          className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 sm:w-80 p-4 bg-[#FFFDF7] border-2 border-ink rounded-2xl shadow-[4px_4px_0px_#222] text-left animate-in fade-in zoom-in-95 duration-150"
+          className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 sm:w-80 p-4 bg-paper border-2 border-ink rounded-2xl shadow-[4px_4px_0px_var(--sketch-shadow,#222)] text-left animate-in fade-in zoom-in-95 duration-150"
           onMouseLeave={() => setIsOpen(false)}
         >
           {/* Arrow */}
           <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-[2px] w-0 h-0 border-x-8 border-x-transparent border-t-8 border-t-ink" />
-          <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-[4px] w-0 h-0 border-x-7 border-x-transparent border-t-7 border-t-[#FFFDF7]" />
+          <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-[4px] w-0 h-0 border-x-7 border-x-transparent border-t-7 border-t-paper" />
 
           {/* Header */}
           <div className="flex items-center justify-between pb-2 mb-2 border-b-2 border-dashed border-ink/20">
@@ -142,7 +142,7 @@ export function PageGlossaryDrawer({ termIds }: PageGlossaryDrawerProps) {
       {isOpen && (
         <div className="fixed inset-0 z-50 bg-ink/40 backdrop-blur-xs flex items-center justify-center p-4">
           <div
-            className="sketch-box bg-[#FAF9F2] w-full max-w-2xl max-h-[85vh] flex flex-col p-5 sm:p-6 space-y-4"
+            className="sketch-box bg-paper w-full max-w-2xl max-h-[85vh] flex flex-col p-5 sm:p-6 space-y-4"
             role="dialog"
             aria-modal="true"
           >
@@ -178,7 +178,7 @@ export function PageGlossaryDrawer({ termIds }: PageGlossaryDrawerProps) {
               {filtered.map((t) => (
                 <div
                   key={t.id}
-                  className="bg-[#FFFDF7] border-2 border-ink rounded-xl p-3.5 space-y-2 shadow-[2px_2px_0px_#222]"
+                  className="bg-paper border-2 border-ink rounded-xl p-3.5 space-y-2 shadow-[2px_2px_0px_var(--sketch-shadow,#222)]"
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-display font-extrabold text-base text-tealDeep">

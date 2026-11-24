@@ -42,7 +42,7 @@ export function AnnotatedCodeCard({
   const activeAnnotation = annotations.find((a) => a.line === selectedLine);
 
   return (
-    <div className="sketch-box-alt bg-[#FFFDF7] p-5 sm:p-6 space-y-4">
+    <div className="sketch-box-alt p-5 sm:p-6 space-y-4">
       {/* Header & Language Tabs */}
       <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b-2 border-dashed border-ink/20">
         <div className="flex items-center gap-2">

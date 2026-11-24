@@ -22,7 +22,7 @@ export function MicroCheck({
   const isCorrect = selected === correctIndex;
 
   return (
-    <div className="bg-[#FFFDF7] border-2 border-ink rounded-2xl p-4 sm:p-5 space-y-3 shadow-[3px_3px_0px_#222]">
+    <div className="bg-paper border-2 border-ink rounded-2xl p-4 sm:p-5 space-y-3 shadow-[3px_3px_0px_var(--sketch-shadow,#222)]">
       <div className="flex items-center gap-2">
         <span className="text-xl">🎯</span>
         <span className="font-display font-black text-sm text-tealDeep uppercase tracking-wider">

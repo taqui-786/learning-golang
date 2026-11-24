@@ -1,16 +1,55 @@
 @import "tailwindcss";
 
+:root {
+  --theme-paper: #FAF9F2;
+  --theme-paperDark: #F2EFE2;
+  --theme-ink: #222222;
+  --theme-tealInk: #53B7BE;
+  --theme-tealDeep: #146F77;
+  --theme-tealSoft: #D7F0F2;
+  --theme-yellowHi: #F9EE75;
+  --theme-yellowSoft: #FDF7BC;
+  --theme-redPen: #D64545;
+  --theme-greenPen: #2E8B57;
+
+  --sketch-bg: #FFFDF7;
+  --sketch-border: #222222;
+  --sketch-shadow: #222222;
+  --sketch-code-bg: #F4F2E7;
+  --sketch-dot-color: rgba(34, 34, 34, 0.08);
+}
+
+.dark {
+  /* Eye-comfort Warm Dark Palette (Drafting board / chalkboard aesthetic) */
+  --theme-paper: #181A1F;
+  --theme-paperDark: #131418;
+  --theme-ink: #EBE7DD;
+  --theme-tealInk: #4FD1C5;
+  --theme-tealDeep: #68D5DE;
+  --theme-tealSoft: #1B353A;
+  --theme-yellowHi: #F5E050;
+  --theme-yellowSoft: #353018;
+  --theme-redPen: #FF7575;
+  --theme-greenPen: #4ADE80;
+
+  --sketch-bg: #22252B;
+  --sketch-border: #3F454F;
+  --sketch-shadow: #0C0D10;
+  --sketch-code-bg: #15171B;
+  --sketch-dot-color: rgba(235, 231, 221, 0.05);
+}
+
 @theme {
-  --color-paper: #FAF9F2;
-  --color-paperDark: #F2EFE2;
-  --color-ink: #222222;
-  --color-tealInk: #53B7BE;
-  --color-tealDeep: #146F77;
-  --color-tealSoft: #D7F0F2;
-  --color-yellowHi: #F9EE75;
-  --color-yellowSoft: #FDF7BC;
-  --color-redPen: #D64545;
-  --color-greenPen: #2E8B57;
+  --color-paper: var(--theme-paper);
+  --color-paperDark: var(--theme-paperDark);
+  --color-ink: var(--theme-ink);
+  --color-tealInk: var(--theme-tealInk);
+  --color-tealDeep: var(--theme-tealDeep);
+  --color-tealSoft: var(--theme-tealSoft);
+  --color-yellowHi: var(--theme-yellowHi);
+  --color-yellowSoft: var(--theme-yellowSoft);
+  --color-redPen: var(--theme-redPen);
+  --color-greenPen: var(--theme-greenPen);
 
   --font-display: "Shantell Sans", cursive, sans-serif;
   --font-hand: "Patrick Hand", cursive, sans-serif;
@@ -23,47 +62,52 @@
   }
 
   body {
-    background-color: #FAF9F2;
-    color: #222222;
+    background-color: var(--theme-paper);
+    color: var(--theme-ink);
     font-family: "Patrick Hand", cursive, sans-serif;
-    background-image: radial-gradient(rgba(34, 34, 34, 0.08) 1px, transparent 1px);
+    background-image: radial-gradient(var(--sketch-dot-color, rgba(34, 34, 34, 0.08)) 1px, transparent 1px);
     background-size: 26px 26px;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 }
 
 /* Hand-drawn organic sketchnote surfaces */
 .sketch-box {
-  background-color: #FFFDF7;
-  border: 2.6px solid #222222;
+  background-color: var(--sketch-bg, #FFFDF7);
+  border: 2.6px solid var(--sketch-border, #222222);
   border-radius: 22px 14px 24px 16px / 15px 24px 14px 22px;
-  box-shadow: 4px 4px 0px #222222;
+  box-shadow: 4px 4px 0px var(--sketch-shadow, #222222);
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .sketch-box-alt {
-  background-color: #FFFDF7;
-  border: 2.6px solid #222222;
+  background-color: var(--sketch-bg, #FFFDF7);
+  border: 2.6px solid var(--sketch-border, #222222);
   border-radius: 14px 24px 16px 22px / 22px 15px 24px 14px;
-  box-shadow: 4px 4px 0px #222222;
+  box-shadow: 4px 4px 0px var(--sketch-shadow, #222222);
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .sketch-box-teal {
-  background-color: #E7F7F8;
-  border: 2.6px solid #222222;
+  background-color: var(--theme-tealSoft, #E7F7F8);
+  border: 2.6px solid var(--sketch-border, #222222);
   border-radius: 18px 12px 20px 14px / 14px 20px 12px 18px;
-  box-shadow: 4px 4px 0px #53B7BE;
+  box-shadow: 4px 4px 0px var(--theme-tealInk, #53B7BE);
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .sketch-box-yellow {
-  background-color: #FDF7B4;
-  border: 2.6px solid #222222;
+  background-color: var(--theme-yellowSoft, #FDF7B4);
+  border: 2.6px solid var(--sketch-border, #222222);
   border-radius: 16px 22px 14px 20px / 20px 14px 22px 16px;
-  box-shadow: 4px 4px 0px #222222;
+  box-shadow: 4px 4px 0px var(--sketch-shadow, #222222);
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .sketch-btn {
-  border: 2.4px solid #222222;
+  border: 2.4px solid var(--sketch-border, #222222);
   border-radius: 14px 10px 15px 11px / 11px 15px 10px 14px;
-  box-shadow: 3px 3px 0px #222222;
+  box-shadow: 3px 3px 0px var(--sketch-shadow, #222222);
   transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.12s cubic-bezier(0.16, 1, 0.3, 1),
     background-color 0.12s ease;
@@ -72,12 +116,12 @@
 
 .sketch-btn:hover {
   transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0px #222222;
+  box-shadow: 4px 4px 0px var(--sketch-shadow, #222222);
 }
 
 .sketch-btn:active {
   transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px #222222;
+  box-shadow: 1px 1px 0px var(--sketch-shadow, #222222);
 }
 
 .sketch-btn:focus-visible,
@@ -85,7 +129,7 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 3px solid #53B7BE;
+  outline: 3px solid var(--theme-tealInk, #53B7BE);
   outline-offset: 2px;
 }
 
@@ -117,10 +161,17 @@ select:focus-visible {
 
 .speech-bubble {
   position: relative;
-  background: #F9EE75;
-  border: 2.5px solid #222222;
+  background: var(--theme-yellowHi, #F9EE75);
+  color: #222222 !important;
+  border: 2.5px solid var(--sketch-border, #222222);
   border-radius: 24px 20px 26px 18px / 18px 24px 18px 22px;
   padding: 14px 18px;
+}
+
+.speech-bubble p,
+.speech-bubble span,
+.speech-bubble div {
+  color: #222222 !important;
 }
 
 .speech-bubble::after {
@@ -130,15 +181,15 @@ select:focus-visible {
   left: 28px;
   width: 18px;
   height: 14px;
-  background: #F9EE75;
-  border-right: 2.5px solid #222222;
-  border-bottom: 2.5px solid #222222;
+  background: var(--theme-yellowHi, #F9EE75);
+  border-right: 2.5px solid var(--sketch-border, #222222);
+  border-bottom: 2.5px solid var(--sketch-border, #222222);
   transform: skewX(-28deg) rotate(32deg);
 }
 
 .code-scrap {
-  background-color: #F4F2E7;
-  border: 2.4px solid #222222;
+  background-color: var(--sketch-code-bg, #F4F2E7);
+  border: 2.4px solid var(--sketch-border, #222222);
   border-radius: 10px 14px 12px 16px / 14px 10px 16px 12px;
   position: relative;
 }
@@ -150,12 +201,12 @@ select:focus-visible {
   transform: translateX(-50%) rotate(-2deg);
   width: 74px;
   height: 18px;
-  background: rgba(249, 238, 117, 0.82);
-  border: 1.5px dashed rgba(34, 34, 34, 0.38);
+  background: var(--sketch-tape-bg, rgba(249, 238, 117, 0.82));
+  border: 1.5px dashed var(--sketch-tape-border, rgba(34, 34, 34, 0.38));
   pointer-events: none;
 }
 
-/* Ink-pen syntax colors */
+/* Ink-pen syntax colors (Light Mode) */
 .tk-kw {
   color: #146F77;
   font-weight: 700;
@@ -175,6 +226,45 @@ select:focus-visible {
 .tk-op {
   color: #C93B3B;
   font-weight: 700;
+}
+
+/* Ink-pen syntax colors (Eye-Comfort Dark Mode) */
+.dark .tk-kw {
+  color: #6EE7B7;
+  font-weight: 700;
+}
+.dark .tk-str {
+  color: #FCD34D;
+  font-weight: 600;
+}
+.dark .tk-num {
+  color: #F87171;
+  font-weight: 700;
+}
+.dark .tk-cm {
+  color: #94A3B8;
+  font-style: italic;
+}
+.dark .tk-op {
+  color: #67E8F9;
+  font-weight: 700;
+}
+
+/* Eye-comfort dark mode generic adaptations */
+.dark .bg-white {
+  background-color: var(--sketch-bg, #22252B) !important;
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: var(--theme-paperDark);
+  color: var(--theme-ink);
+  border-color: var(--sketch-border);
+}
+
+.dark input::placeholder {
+  color: rgba(235, 231, 221, 0.45);
 }
 
 .sk-section-title {

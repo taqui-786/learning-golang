@@ -49,6 +49,39 @@ export default function App() {
     }, 2400);
   }, []);
 
+  // Eye-comfort Dark Theme State (persisted in localStorage + prefers-color-scheme)
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    const saved = localStorage.getItem('go_taqui_theme');
+    if (saved === 'dark' || saved === 'light') return saved;
+    return typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+  });
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+    localStorage.setItem('go_taqui_theme', theme);
+  }, [theme]);
+
+  const toggleTheme = useCallback(() => {
+    setTheme((t) => {
+      const next = t === 'dark' ? 'light' : 'dark';
+      showToast(
+        next === 'dark'
+          ? 'Switched to Eye-Comfort Dark Theme 🌙'
+          : 'Switched to Parchment Light Theme ☀️',
+      );
+      return next;
+    });
+  }, [showToast]);
+
   // Persist progress changes to localStorage
   useEffect(() => {
     saveProgressState(progress);
@@ -254,8 +287,25 @@ export default function App() {
             </a>
           </nav>
 
-          {/* Zone 3: Primary Action / Progress Button + Mobile Toggle */}
+          {/* Zone 3: Primary Action / Progress Button + Theme Switcher + Mobile Toggle */}
           <div className="flex items-center gap-2 shrink-0">
+            {/* Eye-Comfort Theme Switcher */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="sketch-btn bg-paperDark hover:bg-yellowHi p-2 sm:px-2.5 sm:py-1.5 font-display text-xs font-bold inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+              title={theme === 'dark' ? 'Switch to Parchment Light Theme' : 'Switch to Eye-Comfort Dark Theme'}
+              aria-label="Toggle eye comfort theme"
+            >
+              <SketchIcon
+                name={theme === 'dark' ? 'sun' : 'moon'}
+                className={`w-4 h-4 ${theme === 'dark' ? 'text-yellowHi' : 'text-tealDeep'}`}
+              />
+              <span className="hidden sm:inline">
+                {theme === 'dark' ? 'Light ☀️' : 'Dark 🌙'}
+              </span>
+            </button>
+
             <a
               href="#/syllabus"
               onClick={(e) => {
@@ -286,6 +336,17 @@ export default function App() {
         {/* Mobile Drawer */}
         {mobileMenuOpen && (
           <div className="md:hidden border-t-2 border-ink bg-paper px-4 py-3 space-y-2 font-display text-sm font-bold">
+            <button
+              type="button"
+              onClick={() => {
+                toggleTheme();
+                setMobileMenuOpen(false);
+              }}
+              className="w-full text-left px-3 py-2 rounded-xl border-2 border-ink bg-paperDark hover:bg-yellowHi flex items-center justify-between"
+            >
+              <span>Theme: {theme === 'dark' ? 'Eye-Comfort Dark 🌙' : 'Parchment Light ☀️'}</span>
+              <SketchIcon name={theme === 'dark' ? 'sun' : 'moon'} className="w-4 h-4" />
+            </button>
             <a
               href="#/"
               onClick={(e) => {

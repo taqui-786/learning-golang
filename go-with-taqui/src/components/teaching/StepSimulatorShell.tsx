@@ -112,7 +112,7 @@ export function StepSimulatorShell({
   const codeLines = codeSnippet.trim().split('\n');
 
   return (
-    <div className="sketch-box bg-[#FFFDF7] p-5 sm:p-7 space-y-5">
+    <div className="sketch-box p-5 sm:p-7 space-y-5">
       {/* 1. Header & Mode Switcher */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b-2 border-dashed border-ink/20">
         <div>
@@ -152,7 +152,7 @@ export function StepSimulatorShell({
       </div>
 
       {/* 2. Visual Stage (Characters, Boxes, Keys moving) */}
-      <div className="bg-[#FAF9F2] border-2 border-ink rounded-2xl p-4 sm:p-6 min-h-[180px] flex flex-col justify-center shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
+      <div className="bg-paperDark border-2 border-ink rounded-2xl p-4 sm:p-6 min-h-[180px] flex flex-col justify-center shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)]">
         {children}
       </div>
 

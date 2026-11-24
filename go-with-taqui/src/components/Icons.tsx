@@ -26,7 +26,9 @@ export type IconName =
   | 'zap'
   | 'lock'
   | 'unlock'
-  | 'star';
+  | 'star'
+  | 'sun'
+  | 'moon';
 
 const ICON_PATHS: Record<IconName, React.ReactNode> = {
   home: (
@@ -190,6 +192,18 @@ const ICON_PATHS: Record<IconName, React.ReactNode> = {
   ),
   star: (
     <polygon points="12,2.5 14.9,8.4 21.4,9.3 16.7,13.9 17.8,20.4 12,17.3 6.2,20.4 7.3,13.9 2.6,9.3 9.1,8.4" />
+  ),
+  sun: (
+    <>
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+    </>
+  ),
+  moon: (
+    <>
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+      <path d="M19 3v4M21 5h-4" />
+    </>
   ),
 };
 
