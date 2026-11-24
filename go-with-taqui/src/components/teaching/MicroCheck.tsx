@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Check, XCircle, RotateCcw } from 'lucide-react';
 import { SketchIcon } from '../Icons';
 
 export interface MicroCheckProps {
@@ -60,10 +61,16 @@ export function MicroCheck({
             >
               <span>{opt}</span>
               {isSubmitted && isThisCorrect && (
-                <span className="text-greenPen text-lg font-bold shrink-0">✓ Correct</span>
+                <span className="text-greenPen text-sm font-black shrink-0 inline-flex items-center gap-1.5">
+                  <Check className="w-4 h-4 stroke-[3]" />
+                  <span>Correct</span>
+                </span>
               )}
               {isSubmitted && isThisSelected && !isThisCorrect && (
-                <span className="text-redPen text-lg font-bold shrink-0">✕ Not quite</span>
+                <span className="text-redPen text-sm font-black shrink-0 inline-flex items-center gap-1.5">
+                  <XCircle className="w-4 h-4 stroke-[2.5]" />
+                  <span>Not quite</span>
+                </span>
               )}
             </button>
           );
@@ -99,9 +106,10 @@ export function MicroCheck({
             <button
               type="button"
               onClick={() => setSelected(null)}
-              className="mt-2 sketch-btn bg-paper px-3 py-1 text-xs font-display font-bold hover:bg-yellowHi"
+              className="mt-2 sketch-btn bg-paper px-3 py-1 text-xs font-display font-bold hover:bg-yellowHi inline-flex items-center gap-1.5"
             >
-              Try Again ↺
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Try Again</span>
             </button>
           )}
         </div>

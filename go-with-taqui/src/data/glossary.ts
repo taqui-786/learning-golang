@@ -1,7 +1,18 @@
 export interface GlossaryTerm {
   id: string;
   name: string;
-  category: 'concurrency' | 'memory' | 'types' | 'basics' | 'errors' | 'tooling';
+  category:
+    | 'concurrency'
+    | 'memory'
+    | 'types'
+    | 'basics'
+    | 'errors'
+    | 'tooling'
+    | 'systems'
+    | 'backend'
+    | 'internals'
+    | 'cloud'
+    | 'ai';
   plainEnglish: string; // 1 short sentence, 8th-grade vocabulary, no jargon explaining jargon!
   analogy: string;      // 1 memorable real-world mental picture
   jsEquivalent: string; // Direct bridge for JavaScript/TypeScript developers
@@ -454,6 +465,110 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
     plainEnglish: 'A silent background janitor in Go that cleans up heap memory your program is no longer using.',
     analogy: 'The night-shift cleaning crew that empties office trash cans so the building never overflows with junk.',
     jsEquivalent: 'Identical to the JavaScript V8 Garbage Collector, but tuned for sub-millisecond pauses.',
+  },
+  'http-handler': {
+    id: 'http-handler',
+    name: 'http.Handler',
+    category: 'systems',
+    plainEnglish: 'A Go interface with a single `ServeHTTP(w http.ResponseWriter, r *http.Request)` method for responding to web requests.',
+    analogy: 'A postal clerk window where letters arrive (Request) and official replies are stamped and returned (Response).',
+    jsEquivalent: 'Express.js request handler function `(req, res, next) => { ... }`.',
+  },
+  middleware: {
+    id: 'middleware',
+    name: 'HTTP Middleware',
+    category: 'systems',
+    plainEnglish: 'A function wrapping an HTTP handler to execute code (logging, auth, metrics) before and after the handler runs.',
+    analogy: 'A security guard checkpoint in an airport lobby checking boarding passes before passengers enter the gate.',
+    jsEquivalent: 'Express middleware `app.use((req, res, next) => { ... })`.',
+  },
+  'json-marshal': {
+    id: 'json-marshal',
+    name: 'JSON Marshalling',
+    category: 'systems',
+    plainEnglish: 'Converting an in-memory Go struct into a JSON byte slice via `json.Marshal(v)` guided by struct tags `json:"name"`.',
+    analogy: 'Packing an assembled LEGO castle neatly into a flat cardboard box for shipping.',
+    jsEquivalent: '`JSON.stringify(obj)` in JavaScript.',
+  },
+  'connection-pool': {
+    id: 'connection-pool',
+    name: 'Database Connection Pool',
+    category: 'backend',
+    plainEnglish: 'A managed pool of reusable TCP connections to Postgres/MySQL inside `sql.DB` to avoid costly handshakes per query.',
+    analogy: 'A fleet of rental bicycles ready in a rack—you borrow one for a trip, then return it for the next rider.',
+    jsEquivalent: 'A `pg.Pool` or generic connection pool in Node.js.',
+  },
+  transaction: {
+    id: 'transaction',
+    name: 'Database Transaction (ACID)',
+    category: 'backend',
+    plainEnglish: 'A group of SQL statements executed atomically (`tx.Begin()`, `tx.Commit()`, `tx.Rollback()`)—all succeed or none do.',
+    analogy: 'A bank transfer where money MUST leave Account A AND enter Account B simultaneously, or the whole operation is canceled.',
+    jsEquivalent: '`knex.transaction(async (trx) => { ... })` or Prisma `$transaction`.',
+  },
+  generics: {
+    id: 'generics',
+    name: 'Generics (Type Parameters)',
+    category: 'internals',
+    plainEnglish: 'Writing functions and structs with type placeholders `[T any]` that work across multiple data types with zero runtime overhead.',
+    analogy: 'A cookie cutter that cuts cookie dough into star shapes regardless of whether the dough is chocolate or vanilla.',
+    jsEquivalent: 'TypeScript generic functions `function identity<T>(arg: T): T`.',
+  },
+  'type-constraint': {
+    id: 'type-constraint',
+    name: 'Type Constraint',
+    category: 'internals',
+    plainEnglish: 'An interface that specifies which concrete types are permitted to substitute for a generic type parameter (e.g. `comparable`).',
+    analogy: 'A height limit bar at an amusement park rollercoaster entrance.',
+    jsEquivalent: 'TypeScript generic constraint `function sort<T extends Comparable>(list: T[])`.',
+  },
+  reflection: {
+    id: 'reflection',
+    name: 'Reflection (reflect)',
+    category: 'internals',
+    plainEnglish: 'A Go package that allows your program to inspect variable types, struct tags, and fields dynamically at runtime.',
+    analogy: 'A doctor using an X-ray machine to see internal bones without opening the patient up.',
+    jsEquivalent: 'JavaScript `Object.keys()`, `typeof`, and `Reflect` API.',
+  },
+  grpc: {
+    id: 'grpc',
+    name: 'gRPC',
+    category: 'cloud',
+    plainEnglish: 'A blazing-fast, binary Remote Procedure Call framework built by Google using HTTP/2 multiplexing and Protocol Buffers.',
+    analogy: 'A direct pneumatic tube sending tightly compressed capsules between two banking offices.',
+    jsEquivalent: 'Calling an internal microservice via `@grpc/grpc-js` instead of REST JSON.',
+  },
+  'redis-cache': {
+    id: 'redis-cache',
+    name: 'Redis Cache-Aside',
+    category: 'cloud',
+    plainEnglish: 'An in-memory key-value cache checked first before hitting a slower SQL database.',
+    analogy: 'Keeping the 5 most popular takeout menus on your refrigerator door instead of searching the kitchen filing cabinet.',
+    jsEquivalent: 'Connecting `ioredis` in Node.js to cache API query results.',
+  },
+  'sse-streaming': {
+    id: 'sse-streaming',
+    name: 'Server-Sent Events (SSE)',
+    category: 'ai',
+    plainEnglish: 'A persistent HTTP connection where a Go server flushes text chunks (tokens) to the browser in real time without polling.',
+    analogy: 'A live sports ticker printing text characters onto a tape ribbon as plays happen on the field.',
+    jsEquivalent: 'Browser `new EventSource(url)` listening to streaming chunks from an Express endpoint.',
+  },
+  'rag-pipeline': {
+    id: 'rag-pipeline',
+    name: 'RAG Pipeline',
+    category: 'ai',
+    plainEnglish: 'Retrieval-Augmented Generation: searching a vector database for relevant private knowledge and injecting it into an LLM prompt.',
+    analogy: 'Giving an exam candidate the exact open textbook page before they answer a tricky question.',
+    jsEquivalent: 'LangChain JS vector search similarity retrieval combined with OpenAI prompt generation.',
+  },
+  'ai-agent': {
+    id: 'ai-agent',
+    name: 'Go AI Agent Loop',
+    category: 'ai',
+    plainEnglish: 'A Go loop where an LLM observes a goal, chooses a tool function to run, evaluates the output, and iterates to completion.',
+    analogy: 'A smart detective who finds a clue, calls the lab, reads the analysis, and decides the next move until the case is solved.',
+    jsEquivalent: 'An autonomous agent loop using LangGraph or Vercel AI SDK.',
   },
 };
 

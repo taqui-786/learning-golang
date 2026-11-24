@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { X, BookOpen } from 'lucide-react';
 import { getTerm, GLOSSARY, GlossaryTerm } from '../../data/glossary';
 import { SketchIcon } from '../Icons';
 
@@ -66,10 +67,10 @@ export function Term({ id, children, className = '' }: TermProps) {
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="text-ink/60 hover:text-ink text-xs font-bold px-1"
+              className="text-ink/60 hover:text-ink text-xs font-bold p-1 rounded-md hover:bg-ink/5 inline-flex items-center"
               aria-label="Close"
             >
-              ✕
+              <X className="w-3.5 h-3.5" />
             </button>
           </div>
 
@@ -156,9 +157,10 @@ export function PageGlossaryDrawer({ termIds }: PageGlossaryDrawerProps) {
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                className="sketch-btn bg-paper px-3 py-1 font-display text-sm font-bold"
+                className="sketch-btn bg-paper px-3 py-1 font-display text-sm font-bold inline-flex items-center gap-1 hover:bg-yellowHi"
               >
-                Close ✕
+                <span>Close</span>
+                <X className="w-3.5 h-3.5" />
               </button>
             </div>
 

@@ -1,4 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
+import {
+  Play,
+  Pause,
+  RotateCcw,
+  StepForward,
+  ChevronLeft,
+  ChevronRight,
+  FlaskConical,
+  AlertTriangle,
+  ShieldCheck,
+  Lock,
+  BookOpen,
+  Zap,
+  Cpu,
+} from 'lucide-react';
 import { SketchIcon } from '../Icons';
 
 export interface SimulatorStep {
@@ -12,7 +27,7 @@ export interface StepSimulatorShellProps {
   subtitle?: string;
   modeToggle?: {
     current: string;
-    options: { id: string; label: string; icon?: string }[];
+    options: { id: string; label: string; icon?: React.ReactNode }[];
     onChange: (modeId: string) => void;
   };
   steps: SimulatorStep[];
@@ -20,6 +35,27 @@ export interface StepSimulatorShellProps {
   onStepChange: (stepIndex: number) => void;
   codeSnippet: string;
   children: React.ReactNode; // The Visual Stage
+}
+
+function renderOptionIcon(icon?: React.ReactNode) {
+  if (!icon) return null;
+  if (typeof icon !== 'string') return icon;
+  switch (icon) {
+    case 'alert':
+      return <AlertTriangle className="w-3.5 h-3.5 text-redPen shrink-0" />;
+    case 'shield':
+      return <ShieldCheck className="w-3.5 h-3.5 text-greenPen shrink-0" />;
+    case 'lock':
+      return <Lock className="w-3.5 h-3.5 text-ink shrink-0" />;
+    case 'book':
+      return <BookOpen className="w-3.5 h-3.5 text-ink shrink-0" />;
+    case 'zap':
+      return <Zap className="w-3.5 h-3.5 text-yellowHi shrink-0" />;
+    case 'cpu':
+      return <Cpu className="w-3.5 h-3.5 text-tealDeep shrink-0" />;
+    default:
+      return null;
+  }
 }
 
 export function StepSimulatorShell({
@@ -117,7 +153,7 @@ export function StepSimulatorShell({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b-2 border-dashed border-ink/20">
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-xl">🔬</span>
+            <FlaskConical className="w-5 h-5 text-tealDeep shrink-0" />
             <h3 className="font-display font-black text-xl text-ink">{title}</h3>
           </div>
           {subtitle && (
@@ -142,7 +178,7 @@ export function StepSimulatorShell({
                     active ? 'bg-yellowHi text-ink' : 'bg-transparent text-ink/70 border-transparent shadow-none hover:bg-tealSoft/50'
                   }`}
                 >
-                  {opt.icon && <span>{opt.icon}</span>}
+                  {renderOptionIcon(opt.icon)}
                   <span>{opt.label}</span>
                 </button>
               );
@@ -190,12 +226,13 @@ export function StepSimulatorShell({
               type="button"
               onClick={handleStepBackward}
               disabled={currentStep === 0}
-              className={`sketch-btn bg-paper px-3 py-2 font-display text-xs font-bold inline-flex items-center gap-1 ${
+              className={`sketch-btn bg-paper px-3 py-2 font-display text-xs font-bold inline-flex items-center gap-1.5 ${
                 currentStep === 0 ? 'opacity-40 cursor-not-allowed shadow-none' : 'hover:bg-tealSoft'
               }`}
               title="Step backward"
             >
-              ◀ Back
+              <ChevronLeft className="w-4 h-4" />
+              <span>Back</span>
             </button>
 
             <button
@@ -208,8 +245,8 @@ export function StepSimulatorShell({
                   : 'bg-yellowHi text-ink hover:bg-yellowSoft'
               }`}
             >
-              <span>Step Forward 1 Step</span>
-              <span>▶</span>
+              <span>Step Forward</span>
+              <ChevronRight className="w-4 h-4" />
             </button>
 
             <button
@@ -219,16 +256,27 @@ export function StepSimulatorShell({
                 isPlaying ? 'bg-tealInk text-paper' : 'bg-tealSoft text-ink hover:bg-tealSoft/80'
               }`}
             >
-              <span>{isPlaying ? '⏸ Pause' : '▶ Auto-Play (Slow)'}</span>
+              {isPlaying ? (
+                <>
+                  <Pause className="w-3.5 h-3.5 fill-current" />
+                  <span>Pause</span>
+                </>
+              ) : (
+                <>
+                  <Play className="w-3.5 h-3.5 fill-current" />
+                  <span>Auto-Play (Slow)</span>
+                </>
+              )}
             </button>
 
             <button
               type="button"
               onClick={handleReset}
-              className="sketch-btn bg-paper px-3 py-2 font-display text-xs font-bold hover:bg-redPen/15 text-ink/80"
+              className="sketch-btn bg-paper px-3 py-2 font-display text-xs font-bold hover:bg-redPen/15 text-ink/80 inline-flex items-center gap-1.5"
               title="Reset simulator"
             >
-              ↺ Reset
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Reset</span>
             </button>
           </div>
 

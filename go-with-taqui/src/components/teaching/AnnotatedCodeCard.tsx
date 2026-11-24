@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Copy, Check } from 'lucide-react';
 import { SketchIcon } from '../Icons';
 
 export interface CodeAnnotation {
@@ -81,10 +82,19 @@ export function AnnotatedCodeCard({
           <button
             type="button"
             onClick={handleCopy}
-            className="sketch-btn bg-paper px-3 py-1 font-display text-xs font-bold inline-flex items-center gap-1 hover:bg-tealSoft"
+            className="sketch-btn bg-paper px-3 py-1 font-display text-xs font-bold inline-flex items-center gap-1.5 hover:bg-tealSoft"
           >
-            <SketchIcon name="copy" className="w-3.5 h-3.5" />
-            <span>{copied ? 'Copied!' : 'Copy'}</span>
+            {copied ? (
+              <>
+                <Check className="w-3.5 h-3.5 text-greenPen stroke-[3]" />
+                <span className="text-greenPen font-black">Copied!</span>
+              </>
+            ) : (
+              <>
+                <Copy className="w-3.5 h-3.5" />
+                <span>Copy</span>
+              </>
+            )}
           </button>
         </div>
       </div>

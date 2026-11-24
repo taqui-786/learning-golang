@@ -1,4 +1,16 @@
 import React, { useState } from 'react';
+import {
+  AlertTriangle,
+  ShieldCheck,
+  Lock,
+  BookOpen,
+  Zap,
+  Cpu,
+  CheckCircle2,
+  XCircle,
+  Sparkles,
+  CheckSquare,
+} from 'lucide-react';
 import type { AppProgressState, SyllabusModule } from '../../../types';
 import { SketchIcon } from '../../Icons';
 import { AnnotatedCodeCard } from '../AnnotatedCodeCard';
@@ -170,8 +182,8 @@ func main() {
       modeToggle={{
         current: mode,
         options: [
-          { id: 'race', label: '❌ Without Mutex (Data Race)', icon: 'alert' },
-          { id: 'safe', label: '✅ With sync.Mutex (Safe)', icon: 'shield' },
+          { id: 'race', label: 'Without Mutex (Data Race)', icon: 'alert' },
+          { id: 'safe', label: 'With sync.Mutex (Safe)', icon: 'shield' },
         ],
         onChange: (newMode) => {
           setMode(newMode as 'race' | 'safe');
@@ -491,8 +503,8 @@ func (p *MuseumPlaque) Update(newMsg string) {
       modeToggle={{
         current: mode,
         options: [
-          { id: 'mutex', label: '🔒 sync.Mutex (Exclusive Lock)', icon: 'lock' },
-          { id: 'rwmutex', label: '📖 sync.RWMutex (Multiple Readers)', icon: 'book' },
+          { id: 'mutex', label: 'sync.Mutex (Exclusive Lock)', icon: 'lock' },
+          { id: 'rwmutex', label: 'sync.RWMutex (Multiple Readers)', icon: 'book' },
         ],
         onChange: (newMode) => {
           setMode(newMode as 'mutex' | 'rwmutex');
@@ -1012,8 +1024,8 @@ func main() {
       modeToggle={{
         current: mode,
         options: [
-          { id: 'once', label: '⚡ sync.Once (Singleton Init)', icon: 'zap' },
-          { id: 'atomic', label: '🚀 sync/atomic (Lock-Free Counter)', icon: 'cpu' },
+          { id: 'once', label: 'sync.Once (Singleton Init)', icon: 'zap' },
+          { id: 'atomic', label: 'sync/atomic (Lock-Free Counter)', icon: 'cpu' },
         ],
         onChange: (newMode) => {
           setMode(newMode as 'once' | 'atomic');
@@ -1329,22 +1341,24 @@ go func() {
                 <button
                   type="button"
                   onClick={() => setShowFix((prev) => ({ ...prev, [cur.id]: false }))}
-                  className={`sketch-btn px-3 py-1 text-xs font-display font-black ${
+                  className={`sketch-btn px-3 py-1.5 text-xs font-display font-black inline-flex items-center gap-1.5 ${
                     !isFixActive ? 'bg-redPen/20 text-redPen border-redPen' : 'bg-paper text-ink/60'
                   }`}
                 >
-                  ❌ The Mistake
+                  <XCircle className="w-3.5 h-3.5 text-redPen shrink-0" />
+                  <span>The Mistake</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowFix((prev) => ({ ...prev, [cur.id]: true }))}
-                  className={`sketch-btn px-3 py-1 text-xs font-display font-black ${
+                  className={`sketch-btn px-3 py-1.5 text-xs font-display font-black inline-flex items-center gap-1.5 ${
                     isFixActive
                       ? 'bg-greenPen/20 text-greenPen border-greenPen shadow-[2px_2px_0px_#2E8B57]'
                       : 'bg-paper text-ink/60'
                   }`}
                 >
-                  ✅ The Fix
+                  <CheckCircle2 className="w-3.5 h-3.5 text-greenPen shrink-0" />
+                  <span>The Fix</span>
                 </button>
               </div>
 
@@ -1608,8 +1622,9 @@ export function SynchronizationGoldLesson({
             <span className="font-mono text-xs font-black uppercase px-3 py-1 rounded-full bg-tealDeep text-paper shadow-[2px_2px_0px_#222]">
               Module 19 · Track 4: Concurrency
             </span>
-            <span className="font-display font-extrabold text-xs px-2.5 py-0.5 rounded-full bg-yellowHi border border-ink text-ink shadow-[1px_1px_0px_#222]">
-              🌟 Gold Standard Interactive Masterclass
+            <span className="font-display font-extrabold text-xs px-2.5 py-0.5 rounded-full bg-yellowHi border border-ink text-ink shadow-[1px_1px_0px_#222] inline-flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-tealDeep" />
+              <span>Interactive Masterclass</span>
             </span>
           </div>
 
@@ -1660,9 +1675,10 @@ export function SynchronizationGoldLesson({
           <button
             type="button"
             onClick={() => onCheckAllSubtopics(module.subtopics.map((s) => s.code))}
-            className="sketch-btn bg-paper px-3 py-1 font-display text-xs font-bold hover:bg-tealSoft"
+            className="sketch-btn bg-paper px-3 py-1 font-display text-xs font-bold hover:bg-tealSoft inline-flex items-center gap-1.5"
           >
-            Check All {module.subtopics.length} Subtopics
+            <CheckSquare className="w-3.5 h-3.5" />
+            <span>Check All {module.subtopics.length} Subtopics</span>
           </button>
         </div>
       </header>
@@ -1968,9 +1984,10 @@ const initDB = _.once(() => {
           <button
             type="button"
             onClick={() => onCheckAllSubtopics(module.subtopics.map((s) => s.code))}
-            className="sketch-btn bg-paper px-3.5 py-1.5 font-display text-xs font-bold hover:bg-tealSoft"
+            className="sketch-btn bg-paper px-3.5 py-1.5 font-display text-xs font-bold hover:bg-tealSoft inline-flex items-center gap-1.5"
           >
-            Check All
+            <CheckSquare className="w-3.5 h-3.5" />
+            <span>Check All</span>
           </button>
         </div>
 
