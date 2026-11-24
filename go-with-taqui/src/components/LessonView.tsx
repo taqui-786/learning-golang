@@ -40,12 +40,14 @@ export function LessonView({
   const [expandedSubCode, setExpandedSubCode] = useState<string | null>(null);
   const [quizAnswers, setQuizAnswers] = useState<Record<number, number>>({});
   const [quizSubmitted, setQuizSubmitted] = useState(false);
+  const [goldView, setGoldView] = useState(true);
 
   // Reset quiz local state when switching modules
   useEffect(() => {
     setQuizAnswers({});
     setQuizSubmitted(false);
     setSidebarOpen(false);
+    setGoldView(true);
   }, [module.id]);
 
   // Smooth scroll & highlight if navigated to a specific subtopic anchor
@@ -200,7 +202,47 @@ export function LessonView({
 
       {/* ==================== MAIN LESSON WORKSPACE ==================== */}
       <div className="lg:col-span-9 space-y-7 min-w-0">
-        {module.slug === 'synchronization' ? (
+        {module.slug === 'synchronization' && (
+          <div className="sketch-box-yellow p-3.5 flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5">
+              <span className="text-2xl">✨</span>
+              <div>
+                <div className="font-display font-black text-sm text-ink">
+                  Gold Standard Synchronization Masterclass
+                </div>
+                <div className="font-hand text-xs text-ink/80">
+                  Featuring 4 interactive visual labs, common traps, and 1-glance cheat sheet.
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-1.5 bg-paper border-2 border-ink rounded-xl p-1">
+              <button
+                type="button"
+                onClick={() => setGoldView(true)}
+                className={`sketch-btn px-3 py-1 font-display text-xs font-black transition-all ${
+                  goldView
+                    ? 'bg-yellowHi text-ink border-ink shadow-[2px_2px_0px_#222]'
+                    : 'bg-transparent text-ink/70 border-transparent shadow-none hover:bg-tealSoft/40'
+                }`}
+              >
+                🌟 Masterclass
+              </button>
+              <button
+                type="button"
+                onClick={() => setGoldView(false)}
+                className={`sketch-btn px-3 py-1 font-display text-xs font-black transition-all ${
+                  !goldView
+                    ? 'bg-tealSoft text-ink border-ink shadow-[2px_2px_0px_#222]'
+                    : 'bg-transparent text-ink/70 border-transparent shadow-none hover:bg-tealSoft/40'
+                }`}
+              >
+                📄 Classic Notes
+              </button>
+            </div>
+          </div>
+        )}
+
+        {module.slug === 'synchronization' && goldView ? (
           <SynchronizationGoldLesson
             module={module}
             progress={progress}
@@ -209,6 +251,7 @@ export function LessonView({
             onCheckAllSubtopics={onCheckAllSubtopics}
             onSaveQuizScore={onSaveQuizScore}
             onToast={onToast}
+            onNavigate={onNavigate}
           />
         ) : (
           <>

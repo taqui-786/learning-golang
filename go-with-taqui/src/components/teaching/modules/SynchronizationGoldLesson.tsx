@@ -13,8 +13,9 @@ interface SynchronizationGoldLessonProps {
   onToggleModuleComplete: (moduleId: number) => void;
   onToggleSubtopic: (code: string) => void;
   onCheckAllSubtopics: (codes: string[]) => void;
+  onSaveQuizScore?: (moduleId: number, score: number, total: number) => void;
   onToast: (msg: string) => void;
-  onNavigate: (hash: string) => void;
+  onNavigate?: (hash: string) => void;
 }
 
 // =========================================================================
